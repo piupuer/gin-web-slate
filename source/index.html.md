@@ -7,7 +7,8 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - <a href='http://106.75.132.201/'>Demo</a>
-  - <a href='https://github.com/slatedocs/slate'>Docs Powered by Slate</a>
+  - <a href='http://106.75.132.201/swagger/index.html'>Swagger Docs</a>
+  - <a href='https://github.com/slatedocs/slate'>This page powered by Slate</a>
 
 includes:
   - backend
