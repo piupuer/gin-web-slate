@@ -566,7 +566,8 @@
       </ul>
         <ul class="toc-footer">
             <li><a href='http://106.75.132.201/'>Demo</a></li>
-            <li><a href='https://github.com/slatedocs/slate'>Docs Powered by Slate</a></li>
+            <li><a href='http://106.75.132.201/swagger/index.html'>Swagger Docs</a></li>
+            <li><a href='https://github.com/slatedocs/slate'>This page powered by Slate</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -824,6 +825,19 @@ server <span class="o">{</span>
     proxy_set_header    Connection <span class="s1">'upgrade'</span><span class="p">;</span>
     proxy_http_version 1.1<span class="p">;</span>
     proxy_pass         http://gin-web/api<span class="p">;</span>
+  <span class="o">}</span>
+
+  location ^~ /swagger <span class="o">{</span>
+    proxy_redirect     off<span class="p">;</span>
+    proxy_set_header   X-Real-IP <span class="nv">$remote_addr</span><span class="p">;</span>
+    proxy_set_header   X-Forwarded-For <span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+    proxy_set_header   X-Forwarded-Proto <span class="nv">$scheme</span><span class="p">;</span>
+    proxy_set_header   Host <span class="nv">$http_host</span><span class="p">;</span>
+    proxy_set_header   X-NginX-Proxy <span class="nb">true</span><span class="p">;</span>
+    proxy_set_header   Upgrade <span class="nv">$http_upgrade</span><span class="p">;</span>
+    proxy_set_header   Connection <span class="s1">'upgrade'</span><span class="p">;</span>
+    proxy_http_version 1.1<span class="p">;</span>
+    proxy_pass         http://gin-web/swagger<span class="p">;</span>
   <span class="o">}</span>
 
   location ^~ /debug/pprof/ <span class="o">{</span>
