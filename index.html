@@ -6,10 +6,10 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta
-            name="description"
-            content="Documentation for the Kittn API"
+            name="Gin Web"
+            content="Documentation for Gin Web"
         >
-    <title>API Reference</title>
+    <title>Gin Web Docs</title>
 
     <style media="screen">
       .highlight table td { padding: 5px; }
@@ -286,16 +286,16 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-c9d8fa83.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-87e2a712.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all-b12a2749.js"></script>
+      <script src="javascripts/all-83b11cfd.js"></script>
 
     <script>
       $(function() { setupCodeCopy(); });
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;go&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -306,9 +306,7 @@
       <img src="images/logo-1e815a84.png" class="logo" alt="" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
+              <a href="#" data-language-name="go">go</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -316,282 +314,899 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
-          </li>
-          <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
-          </li>
-          <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#installation" class="toc-h1 toc-link" data-title="Installation">Installation</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                    <a href="#installation-backend" class="toc-h2 toc-link" data-title="Backend">Backend</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#installation-backend-install-golang" class="toc-h3 toc-link" data-title="Install Golang">Install Golang</a>
+                          </li>
+                          <li>
+                            <a href="#installation-backend-clone-gin-web" class="toc-h3 toc-link" data-title="Clone Gin Web">Clone Gin Web</a>
+                          </li>
+                          <li>
+                            <a href="#installation-backend-enable-goproxy" class="toc-h3 toc-link" data-title="Enable GOPROXY">Enable GOPROXY</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#installation-backend-enable-goproxy-for-current-session" class="toc-h4 toc-link" data-title="For current session">For current session</a>
+                                  </li>
+                                  <li>
+                                    <a href="#installation-backend-enable-goproxy-for-system-variable" class="toc-h4 toc-link" data-title="For system variable">For system variable</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                            <a href="#installation-backend-change-default-config" class="toc-h3 toc-link" data-title="Change default config">Change default config</a>
+                          </li>
+                          <li>
+                            <a href="#installation-backend-run-in-terminal" class="toc-h3 toc-link" data-title="Run in Terminal">Run in Terminal</a>
+                          </li>
+                          <li>
+                            <a href="#installation-backend-run-in-idea" class="toc-h3 toc-link" data-title="Run in Idea">Run in Idea</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#installation-backend-run-in-idea-1-set-goroot" class="toc-h4 toc-link" data-title="1. Set GOROOT">1. Set GOROOT</a>
+                                  </li>
+                                  <li>
+                                    <a href="#installation-backend-run-in-idea-2-enable-goproxy" class="toc-h4 toc-link" data-title="2. Enable GOPROXY">2. Enable GOPROXY</a>
+                                  </li>
+                                  <li>
+                                    <a href="#installation-backend-run-in-idea-3-run" class="toc-h4 toc-link" data-title="3. Run">3. Run</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                            <a href="#installation-backend-swagger" class="toc-h3 toc-link" data-title="Swagger">Swagger</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#installation-backend-swagger-comments" class="toc-h4 toc-link" data-title="Comments">Comments</a>
+                                  </li>
+                                  <li>
+                                    <a href="#installation-backend-swagger-update" class="toc-h4 toc-link" data-title="Update">Update</a>
+                                  </li>
+                                  <li>
+                                    <a href="#installation-backend-swagger-view" class="toc-h4 toc-link" data-title="View">View</a>
+                                  </li>
+                                  <li>
+                                    <a href="#installation-backend-swagger-more-swag" class="toc-h4 toc-link" data-title="More: <a href="https://github.com/swaggo/swag">swag</a>">More: <a href="https://github.com/swaggo/swag">swag</a></a>
+                                  </li>
+                              </ul>
+                          </li>
+                      </ul>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                    <a href="#installation-frontend" class="toc-h2 toc-link" data-title="Frontend">Frontend</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#installation-frontend-install-node" class="toc-h3 toc-link" data-title="Install Node">Install Node</a>
+                          </li>
+                          <li>
+                            <a href="#installation-frontend-clone-gin-web-vue" class="toc-h3 toc-link" data-title="Clone Gin Web Vue">Clone Gin Web Vue</a>
+                          </li>
+                          <li>
+                            <a href="#installation-frontend-install-libraries" class="toc-h3 toc-link" data-title="Install libraries">Install libraries</a>
+                          </li>
+                          <li>
+                            <a href="#installation-frontend-change-default-config" class="toc-h3 toc-link" data-title="Change default config">Change default config</a>
+                          </li>
+                          <li>
+                            <a href="#installation-frontend-run-in-terminal" class="toc-h3 toc-link" data-title="Run in Terminal">Run in Terminal</a>
+                          </li>
+                      </ul>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#installation-iconfont" class="toc-h2 toc-link" data-title="Iconfont">Iconfont</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#installation-iconfont-search-favorite-icons" class="toc-h3 toc-link" data-title="Search favorite icons">Search favorite icons</a>
+                          </li>
+                          <li>
+                            <a href="#installation-iconfont-add-to-project" class="toc-h3 toc-link" data-title="Add to project">Add to project</a>
+                          </li>
+                          <li>
+                            <a href="#installation-iconfont-generate-css" class="toc-h3 toc-link" data-title="Generate css">Generate css</a>
+                          </li>
+                          <li>
+                            <a href="#installation-iconfont-replace-css" class="toc-h3 toc-link" data-title="Replace css">Replace css</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#installation-nginx" class="toc-h2 toc-link" data-title="Nginx">Nginx</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#installation-nginx-install" class="toc-h3 toc-link" data-title="Install">Install</a>
+                          </li>
+                          <li>
+                            <a href="#installation-nginx-run" class="toc-h3 toc-link" data-title="Run">Run</a>
+                          </li>
+                          <li>
+                            <a href="#installation-nginx-add-virtual-host" class="toc-h3 toc-link" data-title="Add virtual host">Add virtual host</a>
+                          </li>
+                          <li>
+                            <a href="#installation-nginx-restart" class="toc-h3 toc-link" data-title="Restart">Restart</a>
+                          </li>
+                          <li>
+                            <a href="#installation-nginx-visit" class="toc-h3 toc-link" data-title="Visit">Visit</a>
+                          </li>
+                      </ul>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+            <a href="#finite-state-machine" class="toc-h1 toc-link" data-title="Finite state machine">Finite state machine</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#finite-state-machine-config-machine" class="toc-h2 toc-link" data-title="Config machine">Config machine</a>
+                  </li>
+                  <li>
+                    <a href="#finite-state-machine-show-results" class="toc-h2 toc-link" data-title="Show results">Show results</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#finite-state-machine-show-results-approval-refused" class="toc-h3 toc-link" data-title="Approval refused">Approval refused</a>
+                          </li>
+                          <li>
+                            <a href="#finite-state-machine-show-results-approval-approved-or-ended" class="toc-h3 toc-link" data-title="Approval approved or ended">Approval approved or ended</a>
+                          </li>
+                          <li>
+                            <a href="#finite-state-machine-show-results-approval-cancelled" class="toc-h3 toc-link" data-title="Approval cancelled">Approval cancelled</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#finite-state-machine-how-to-use" class="toc-h2 toc-link" data-title="How to use">How to use</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#finite-state-machine-how-to-use-transition" class="toc-h3 toc-link" data-title="Transition">Transition</a>
+                          </li>
+                          <li>
+                            <a href="#finite-state-machine-how-to-use-get-detail" class="toc-h3 toc-link" data-title="Get Detail">Get Detail</a>
+                          </li>
+                          <li>
+                            <a href="#finite-state-machine-how-to-use-update-detail" class="toc-h3 toc-link" data-title="Update Detail">Update Detail</a>
+                          </li>
+                          <li>
+                            <a href="#finite-state-machine-how-to-use-model" class="toc-h3 toc-link" data-title="Model">Model</a>
+                          </li>
+                          <li>
+                            <a href="#finite-state-machine-how-to-use-common-api" class="toc-h3 toc-link" data-title="Common Api">Common Api</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#gin-web-docker" class="toc-h1 toc-link" data-title="Gin Web Docker">Gin Web Docker</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#gin-web-docker-redis-sentinel" class="toc-h2 toc-link" data-title="Redis sentinel">Redis sentinel</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#gin-web-docker-redis-sentinel-change-master-slave-ip" class="toc-h3 toc-link" data-title="Change Master/Slave IP">Change Master/Slave IP</a>
+                          </li>
+                          <li>
+                            <a href="#gin-web-docker-redis-sentinel-initialization" class="toc-h3 toc-link" data-title="Initialization">Initialization</a>
+                          </li>
+                          <li>
+                            <a href="#gin-web-docker-redis-sentinel-status" class="toc-h3 toc-link" data-title="Status">Status</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#gin-web-docker-redis-sentinel-status-view-container" class="toc-h4 toc-link" data-title="View container">View container</a>
+                                  </li>
+                                  <li>
+                                    <a href="#gin-web-docker-redis-sentinel-status-master" class="toc-h4 toc-link" data-title="Master">Master</a>
+                                  </li>
+                                  <li>
+                                    <a href="#gin-web-docker-redis-sentinel-status-slave" class="toc-h4 toc-link" data-title="Slave">Slave</a>
+                                  </li>
+                              </ul>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#gin-web-docker-loki" class="toc-h2 toc-link" data-title="Loki">Loki</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#gin-web-docker-loki-initialization" class="toc-h3 toc-link" data-title="Initialization">Initialization</a>
+                          </li>
+                          <li>
+                            <a href="#gin-web-docker-loki-grafana" class="toc-h3 toc-link" data-title="Grafana">Grafana</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#gin-web-docker-loki-grafana-login" class="toc-h4 toc-link" data-title="Login">Login</a>
+                                  </li>
+                                  <li>
+                                    <a href="#gin-web-docker-loki-grafana-skip" class="toc-h4 toc-link" data-title="Skip">Skip</a>
+                                  </li>
+                                  <li>
+                                    <a href="#gin-web-docker-loki-grafana-add-source" class="toc-h4 toc-link" data-title="Add source">Add source</a>
+                                  </li>
+                                  <li>
+                                    <a href="#gin-web-docker-loki-grafana-logs" class="toc-h4 toc-link" data-title="Logs">Logs</a>
+                                  </li>
+                              </ul>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#distribute-cron-task" class="toc-h1 toc-link" data-title="Distribute Cron Task">Distribute Cron Task</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#distribute-cron-task-redis" class="toc-h2 toc-link" data-title="Redis">Redis</a>
+                  </li>
+                  <li>
+                    <a href="#distribute-cron-task-go-helper" class="toc-h2 toc-link" data-title="Go Helper">Go Helper</a>
+                  </li>
+                  <li>
+                    <a href="#distribute-cron-task-example" class="toc-h2 toc-link" data-title="Example">Example</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#distribute-cron-task-example-new" class="toc-h3 toc-link" data-title="New">New</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#distribute-cron-task-example-new-autorequestid" class="toc-h4 toc-link" data-title="AutoRequestId">AutoRequestId</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                            <a href="#distribute-cron-task-example-addtask" class="toc-h3 toc-link" data-title="AddTask">AddTask</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#distribute-cron-task-example-addtask-name" class="toc-h4 toc-link" data-title="Name">Name</a>
+                                  </li>
+                                  <li>
+                                    <a href="#distribute-cron-task-example-addtask-expr" class="toc-h4 toc-link" data-title="Expr">Expr</a>
+                                  </li>
+                              </ul>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='http://106.75.132.201/'>Demo</a></li>
+            <li><a href='https://github.com/slatedocs/slate'>Docs Powered by Slate</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
-
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/slatedocs/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='authentication'>Authentication</h1>
+        <h1 id='installation'>Installation</h1><h2 id='installation-backend'>Backend</h2><h3 id='installation-backend-install-golang'>Install Golang</h3>
+<p>You can download and install it by <a href="https://go.dev/dl/">this</a> link(suggested version &gt;= 1.14).</p>
+<h3 id='installation-backend-clone-gin-web'>Clone Gin Web</h3>
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>Clone Gin Web:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>git clone https://github.com/piupuer/gin-web
+</code></pre></div>
+<p>You can clone the backend repo by git clone.</p>
+<h3 id='installation-backend-enable-goproxy'>Enable GOPROXY</h3>
+<blockquote>
+<p>For current session:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="nb">export </span><span class="nv">GOPROXY</span><span class="o">=</span>https://goproxy.cn,direct
+</code></pre></div><h4 id='installation-backend-enable-goproxy-for-current-session'>For current session</h4>
+<blockquote>
+<p>For system variable(Unix example):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># append one line</span>
+<span class="nb">echo</span> ~/.bashrc <span class="o">&gt;&gt;</span> <span class="s1">'export GOPROXY=https://goproxy.cn,direct'</span>
+<span class="c"># for current session</span>
+<span class="nb">source</span> .bashrc
+<span class="c"># reboot for every session</span>
+reboot
+</code></pre></div><h4 id='installation-backend-enable-goproxy-for-system-variable'>For system variable</h4><h3 id='installation-backend-change-default-config'>Change default config</h3>
+<blockquote>
+<p>Change default config:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="nb">cd </span>gin-web/conf
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<span class="c"># change config file</span>
+vim config.dev.yml
+</code></pre></div>
+<p>Select a yml based on your run mode:<br>
+development: config.dev.yml<br>
+staging: config.stage.yml<br>
+production: config.prod.yml</p>
+<h3 id='installation-backend-run-in-terminal'>Run in Terminal</h3>
+<blockquote>
+<p>Run in Terminal:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="nb">cd </span>gin-web
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+<span class="c"># project use go modules, run will auto download libraries</span>
+go run main.go
+</code></pre></div>
+<p>project use go modules, <code>go run</code> will auto download libraries.</p>
+<h3 id='installation-backend-run-in-idea'>Run in Idea</h3><h4 id='installation-backend-run-in-idea-1-set-goroot'>1. Set GOROOT</h4>
+<p><a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/idea_goroot.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/idea_goroot.jpeg?raw=true" width="600" />
+</a></p>
+<h4 id='installation-backend-run-in-idea-2-enable-goproxy'>2. Enable GOPROXY</h4>
+<p><a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/idea_goproxy.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/idea_goproxy.jpeg?raw=true" width="600" />
+</a></p>
+<h4 id='installation-backend-run-in-idea-3-run'>3. Run</h4>
+<p><a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/idea_run_main.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/idea_run_main.jpeg?raw=true" width="600" />
+</a></p>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
+<p>Success example:</p>
+
+<p><a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/idea_run_success.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/idea_run_success.jpeg?raw=true" width="600" />
+</a></p>
+<h3 id='installation-backend-swagger'>Swagger</h3><h4 id='installation-backend-swagger-comments'>Comments</h4><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">v1</span>
+
+<span class="c">// FindLeave</span>
+<span class="c">// @Security Bearer</span>
+<span class="c">// @Accept json</span>
+<span class="c">// @Produce json</span>
+<span class="c">// @Success 201 {object} resp.Resp "success"</span>
+<span class="c">// @Tags Leave</span>
+<span class="c">// @Description FindLeave</span>
+<span class="c">// @Param params query request.Leave true "params"</span>
+<span class="c">// @Router /leave/list [GET]</span>
+<span class="k">func</span> <span class="n">FindLeave</span><span class="p">(</span><span class="n">c</span> <span class="o">*</span><span class="n">gin</span><span class="o">.</span><span class="n">Context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>You can add swagger comments in /api/v1/xxx function.</p>
+
+<p><a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/swagger/v1.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/swagger/v1.jpeg?raw=true" width="600" />
+</a></p>
+<h4 id='installation-backend-swagger-update'>Update</h4><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># install swag</span>
+go get <span class="nt">-u</span> github.com/swaggo/swag/cmd/swag
+
+<span class="nb">cd </span>gin-web
+<span class="c"># update comments to swagger docs</span>
+swag init <span class="nt">-o</span> docs/swagger <span class="nt">--pd</span> <span class="nt">--parseInternal</span> 
+
+</code></pre></div>
+<p>After run <code>swag init</code> gin-web/docs/swagger/** will be changed.</p>
+<h4 id='installation-backend-swagger-view'>View</h4>
+<p>You can view api list in <a href="http://127.0.0.1/swagger/index.html">127.0.0.1/swagger/index.html</a></p>
+<h4 id='installation-backend-swagger-more-swag'>More: <a href="https://github.com/swaggo/swag">swag</a></h4><h2 id='installation-frontend'>Frontend</h2><h3 id='installation-frontend-install-node'>Install Node</h3>
+<p>You can download and install it by <a href="https://nodejs.org/en/download/">this</a> link(suggested version &gt;= 14).</p>
+<h3 id='installation-frontend-clone-gin-web-vue'>Clone Gin Web Vue</h3>
+<blockquote>
+<p>Clone Gin Web Vue:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>git clone https://github.com/piupuer/gin-web-vue
+</code></pre></div>
+<p>You can clone the frontend repo by git clone.</p>
+<h3 id='installation-frontend-install-libraries'>Install libraries</h3>
+<blockquote>
+<p>Install libraries:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># change registry if you need</span>
+<span class="c"># npm config set registry https://registry.npm.taobao.org</span>
+npm <span class="nb">install</span>
+</code></pre></div>
+<p>You should run command to download libraries before run.</p>
+<h3 id='installation-frontend-change-default-config'>Change default config</h3>
+<blockquote>
+<p>Change default config:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>vim gin-web-vue/.env.development
+<span class="c"># backend api:</span>
+VUE_APP_BASE_API <span class="o">=</span> <span class="s1">'http://127.0.0.1:10000/api/v1'</span>
+<span class="c"># backend websocket:</span>
+VUE_APP_BASE_WS <span class="o">=</span> <span class="s1">'ws://127.0.0.1:10000/api/v1'</span>
+</code></pre></div>
+<p>If you not use <a href="#nginx">nginx</a>, you should change the api url prefix.</p>
+<h3 id='installation-frontend-run-in-terminal'>Run in Terminal</h3>
+<blockquote>
+<p>Run in Terminal:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>npm run serve
+</code></pre></div>
+<p>Success example:</p>
+
+<p><a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/vue_run_success.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/vue_run_success.jpeg?raw=true" width="600" />
+</a></p>
+<h2 id='installation-iconfont'>Iconfont</h2>
+<p><a href="https://www.iconfont.cn/">Home</a></p>
+<h3 id='installation-iconfont-search-favorite-icons'>Search favorite icons</h3>
+<p><a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/iconfont/search.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/iconfont/search.jpeg?raw=true" width="600" />
+</a></p>
+<h3 id='installation-iconfont-add-to-project'>Add to project</h3>
+<p><a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/iconfont/save.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/iconfont/save.jpeg?raw=true" width="600" />
+</a></p>
+<h3 id='installation-iconfont-generate-css'>Generate css</h3>
+<p><a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/iconfont/css.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/iconfont/css.jpeg?raw=true" width="600" />
+</a></p>
+<h3 id='installation-iconfont-replace-css'>Replace css</h3>
+<p>Copy generated CSS to gin-web-vue/public/index.html:</p>
+
+<p><a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/iconfont/code.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/iconfont/code.jpeg?raw=true" width="600" />
+</a></p>
+<h2 id='installation-nginx'>Nginx</h2><h3 id='installation-nginx-install'>Install</h3>
+<blockquote>
+<p>Install(Ubuntu example):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>apt-get <span class="nb">install </span>nginx
+
+nginx <span class="nt">-v</span>
+<span class="c"># my version</span>
+<span class="c"># nginx version: nginx/1.14.0 (Ubuntu)</span>
+</code></pre></div>
+<p>You can also download and install it by <a href="http://nginx.org/en/download.html">this</a> link.</p>
+<h3 id='installation-nginx-run'>Run</h3>
+<blockquote>
+<p>Start service:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>systemctl start nginx
 </code></pre></div>
 <blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
+<p>Find nginx.conf:</p>
 </blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">();</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>nginx <span class="nt">-t</span>
+<span class="c"># nginx: the configuration file /etc/nginx/nginx.conf syntax is ok</span>
+<span class="c"># nginx: configuration file /etc/nginx/nginx.conf test is successful</span>
 </code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Add virtual host in <code>http</code>:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
-</tr>
-</tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre></div>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c">##</span>
+<span class="c"># Virtual Host Configs</span>
+<span class="c">##</span>
+include /etc/nginx/conf.d/<span class="k">*</span>.conf<span class="p">;</span>
+include /etc/nginx/sites-enabled/<span class="k">*</span><span class="p">;</span>
+</code></pre></div><h3 id='installation-nginx-add-virtual-host'>Add virtual host</h3>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Add gin-web.conf:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint retrieves a specific kitten.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>vim /etc/nginx/conf.d/gin-web.conf 
+<span class="c"># write this:</span>
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
-</tr>
-</tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<span class="c"># api</span>
+upstream gin-web <span class="o">{</span>
+  server 127.0.0.1:10000<span class="p">;</span>
+  keepalive 64<span class="p">;</span>
+<span class="o">}</span>
+<span class="c"># ui</span>
+upstream gin-web-vue <span class="o">{</span>
+  server 127.0.0.1:10001<span class="p">;</span>
+  keepalive 64<span class="p">;</span>
+<span class="o">}</span>
+<span class="c"># pprof</span>
+upstream gin-pprof <span class="o">{</span>
+  server 127.0.0.1:10005<span class="p">;</span>
+  keepalive 64<span class="p">;</span>
+<span class="o">}</span>
+server <span class="o">{</span>
+  listen 80<span class="p">;</span>
+  <span class="c"># enable https</span>
+  <span class="c">#listen 443 ssl;</span>
+  <span class="c"># cert</span>
+  <span class="c">#ssl_certificate cert/domain.com.pem;</span>
+  <span class="c">#ssl_certificate_key cert/domain.com.key;</span>
+  <span class="c"># http redirect https</span>
+  <span class="c">#if ( $ssl_protocol = "") {</span>
+  <span class="c">#  rewrite ^ https://$host$request_uri? permanent;</span>
+  <span class="c">#}        </span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+  <span class="c"># your domain</span>
+  <span class="c"># server_name domain.com;</span>
+  server_name 127.0.0.1<span class="p">;</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span> <span class="se">\</span>
-  <span class="nt">-X</span> DELETE <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+  location / <span class="o">{</span>
+    proxy_redirect     off<span class="p">;</span>
+    proxy_set_header    X-Real-IP  <span class="nv">$remote_addr</span><span class="p">;</span>
+    proxy_set_header    X-Forwarded-For <span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+    proxy_set_header    X-Forwarded-Proto <span class="nv">$scheme</span><span class="p">;</span>
+    proxy_set_header    Host <span class="nv">$http_host</span><span class="p">;</span>
+    proxy_set_header    X-NginX-Proxy <span class="nb">true</span><span class="p">;</span>
+    proxy_set_header    Connection <span class="s2">""</span><span class="p">;</span>
+    proxy_http_version 1.1<span class="p">;</span>
+    <span class="c"># end with / (useful for children path)</span>
+    proxy_pass         http://gin-web-vue/<span class="p">;</span>
+  <span class="o">}</span>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre></div>
+  location ^~ /api <span class="o">{</span>
+    proxy_redirect     off<span class="p">;</span>
+    proxy_set_header    X-Real-IP <span class="nv">$remote_addr</span><span class="p">;</span>
+    proxy_set_header    X-Forwarded-For <span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+    proxy_set_header    X-Forwarded-Proto <span class="nv">$scheme</span><span class="p">;</span>
+    proxy_set_header    Host <span class="nv">$http_host</span><span class="p">;</span>
+    proxy_set_header    X-NginX-Proxy <span class="nb">true</span><span class="p">;</span>
+    proxy_set_header    Upgrade <span class="nv">$http_upgrade</span><span class="p">;</span>
+    proxy_set_header    Connection <span class="s1">'upgrade'</span><span class="p">;</span>
+    proxy_http_version 1.1<span class="p">;</span>
+    proxy_pass         http://gin-web/api<span class="p">;</span>
+  <span class="o">}</span>
+
+  location ^~ /debug/pprof/ <span class="o">{</span>
+    proxy_redirect     off<span class="p">;</span>
+    proxy_set_header    X-Real-IP <span class="nv">$remote_addr</span><span class="p">;</span>
+    proxy_set_header    X-Forwarded-For <span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+    proxy_set_header    X-Forwarded-Proto <span class="nv">$scheme</span><span class="p">;</span>
+    proxy_set_header    Host <span class="nv">$http_host</span><span class="p">;</span>
+    proxy_set_header    X-NginX-Proxy <span class="nb">true</span><span class="p">;</span>
+    proxy_set_header    Connection <span class="s2">""</span><span class="p">;</span>
+    proxy_http_version 1.1<span class="p">;</span>
+    proxy_pass         http://gin-pprof/debug/pprof/<span class="p">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><h3 id='installation-nginx-restart'>Restart</h3>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Restart service:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
-</tr>
-</tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>systemctl restart nginx
+</code></pre></div><h3 id='installation-nginx-visit'>Visit</h3>
+<p>Visit it in your browser <a href="http://127.0.0.1">127.0.0.1</a>, port is hidden.</p>
+<h1 id='finite-state-machine'>Finite state machine</h1>
+<p>Do you often encounter finite state machines or approval workflow in your development process?<br>
+Gin Web provides a simple FSM implementation example: Leave request.</p>
+<h2 id='finite-state-machine-config-machine'>Config machine</h2>
+<p>You can add a new machine easily:
+<a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/fsm/config.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/fsm/config.jpeg?raw=true" width="600" />
+</a></p>
+<h2 id='finite-state-machine-show-results'>Show results</h2><h3 id='finite-state-machine-show-results-approval-refused'>Approval refused</h3>
+<p><a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/fsm/refused.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/fsm/refused.jpeg?raw=true" width="600" />
+</a></p>
+<h3 id='finite-state-machine-show-results-approval-approved-or-ended'>Approval approved or ended</h3>
+<p><a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/fsm/ended.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/fsm/ended.jpeg?raw=true" width="600" />
+</a></p>
+<h3 id='finite-state-machine-show-results-approval-cancelled'>Approval cancelled</h3>
+<p><a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/fsm/cancelled.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/fsm/cancelled.jpeg?raw=true" width="600" />
+</a></p>
+<h2 id='finite-state-machine-how-to-use'>How to use</h2>
+<p>You can customize your workflow is like leave request similar to the following functions:</p>
+<h3 id='finite-state-machine-how-to-use-transition'>Transition</h3>
+<blockquote>
+<p>Leave Transition:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">service</span>
 
-<p>The Kittn API uses the following error codes:</p>
+<span class="k">func</span> <span class="p">(</span><span class="n">my</span> <span class="n">MysqlService</span><span class="p">)</span> <span class="n">LeaveTransition</span><span class="p">(</span><span class="n">logs</span> <span class="o">...</span><span class="n">resp</span><span class="o">.</span><span class="n">FsmApprovalLog</span><span class="p">)</span> <span class="p">(</span><span class="n">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">m</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="k">map</span><span class="p">[</span><span class="kt">uint</span><span class="p">][]</span><span class="kt">string</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">log</span> <span class="o">:=</span> <span class="k">range</span> <span class="n">logs</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="n">log</span><span class="o">.</span><span class="n">Category</span> <span class="o">==</span> <span class="n">global</span><span class="o">.</span><span class="n">FsmCategoryLeave</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="n">log</span><span class="o">.</span><span class="n">Resubmit</span> <span class="o">==</span> <span class="n">constant</span><span class="o">.</span><span class="n">One</span> <span class="p">{</span>
+        <span class="n">arr</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">string</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">item</span><span class="p">,</span> <span class="n">ok</span> <span class="o">:=</span> <span class="n">m</span><span class="p">[</span><span class="n">models</span><span class="o">.</span><span class="n">LevelStatusWaitingConfirm</span><span class="p">];</span> <span class="n">ok</span> <span class="p">{</span>
+          <span class="n">arr</span> <span class="o">=</span> <span class="n">item</span>
+        <span class="p">}</span>
+        <span class="n">m</span><span class="p">[</span><span class="n">models</span><span class="o">.</span><span class="n">LevelStatusRefused</span><span class="p">]</span> <span class="o">=</span> <span class="nb">append</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">log</span><span class="o">.</span><span class="n">Uuid</span><span class="p">)</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">log</span><span class="o">.</span><span class="n">Cancel</span> <span class="o">==</span> <span class="n">constant</span><span class="o">.</span><span class="n">One</span> <span class="p">{</span>
+        <span class="n">arr</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">string</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">item</span><span class="p">,</span> <span class="n">ok</span> <span class="o">:=</span> <span class="n">m</span><span class="p">[</span><span class="n">models</span><span class="o">.</span><span class="n">LevelStatusCancelled</span><span class="p">];</span> <span class="n">ok</span> <span class="p">{</span>
+          <span class="n">arr</span> <span class="o">=</span> <span class="n">item</span>
+        <span class="p">}</span>
+        <span class="n">m</span><span class="p">[</span><span class="n">models</span><span class="o">.</span><span class="n">LevelStatusCancelled</span><span class="p">]</span> <span class="o">=</span> <span class="nb">append</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">log</span><span class="o">.</span><span class="n">Uuid</span><span class="p">)</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">log</span><span class="o">.</span><span class="n">Confirm</span> <span class="o">==</span> <span class="n">constant</span><span class="o">.</span><span class="n">One</span> <span class="p">{</span>
+        <span class="n">arr</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">string</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">item</span><span class="p">,</span> <span class="n">ok</span> <span class="o">:=</span> <span class="n">m</span><span class="p">[</span><span class="n">models</span><span class="o">.</span><span class="n">LevelStatusWaitingConfirm</span><span class="p">];</span> <span class="n">ok</span> <span class="p">{</span>
+          <span class="n">arr</span> <span class="o">=</span> <span class="n">item</span>
+        <span class="p">}</span>
+        <span class="n">m</span><span class="p">[</span><span class="n">models</span><span class="o">.</span><span class="n">LevelStatusWaitingConfirm</span><span class="p">]</span> <span class="o">=</span> <span class="nb">append</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">log</span><span class="o">.</span><span class="n">Uuid</span><span class="p">)</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">log</span><span class="o">.</span><span class="n">End</span> <span class="o">==</span> <span class="n">constant</span><span class="o">.</span><span class="n">One</span> <span class="p">{</span>
+        <span class="n">arr</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">string</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">item</span><span class="p">,</span> <span class="n">ok</span> <span class="o">:=</span> <span class="n">m</span><span class="p">[</span><span class="n">models</span><span class="o">.</span><span class="n">LevelStatusApproved</span><span class="p">];</span> <span class="n">ok</span> <span class="p">{</span>
+          <span class="n">arr</span> <span class="o">=</span> <span class="n">item</span>
+        <span class="p">}</span>
+        <span class="n">m</span><span class="p">[</span><span class="n">models</span><span class="o">.</span><span class="n">LevelStatusApproved</span><span class="p">]</span> <span class="o">=</span> <span class="nb">append</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">log</span><span class="o">.</span><span class="n">Uuid</span><span class="p">)</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">arr</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">string</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">item</span><span class="p">,</span> <span class="n">ok</span> <span class="o">:=</span> <span class="n">m</span><span class="p">[</span><span class="n">models</span><span class="o">.</span><span class="n">LevelStatusApproving</span><span class="p">];</span> <span class="n">ok</span> <span class="p">{</span>
+          <span class="n">arr</span> <span class="o">=</span> <span class="n">item</span>
+        <span class="p">}</span>
+        <span class="n">m</span><span class="p">[</span><span class="n">models</span><span class="o">.</span><span class="n">LevelStatusApproving</span><span class="p">]</span> <span class="o">=</span> <span class="nb">append</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">log</span><span class="o">.</span><span class="n">Uuid</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">for</span> <span class="n">status</span><span class="p">,</span> <span class="n">uuids</span> <span class="o">:=</span> <span class="k">range</span> <span class="n">m</span> <span class="p">{</span>
+    <span class="n">err</span> <span class="o">=</span> <span class="n">my</span><span class="o">.</span><span class="n">Q</span><span class="o">.</span><span class="n">Tx</span><span class="o">.</span>
+      <span class="n">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="n">models</span><span class="o">.</span><span class="n">Leave</span><span class="p">{})</span><span class="o">.</span>
+      <span class="n">Where</span><span class="p">(</span><span class="s">"fsm_uuid IN (?)"</span><span class="p">,</span> <span class="n">uuids</span><span class="p">)</span><span class="o">.</span>
+      <span class="n">Update</span><span class="p">(</span><span class="s">"status"</span><span class="p">,</span> <span class="n">status</span><span class="p">)</span><span class="o">.</span><span class="n">Error</span>
+    <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="n">errors</span><span class="o">.</span><span class="n">WithStack</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="no">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/fsm/transition.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/fsm/transition.jpeg?raw=true" width="600" />
+</a></p>
+<h3 id='finite-state-machine-how-to-use-get-detail'>Get Detail</h3>
+<blockquote>
+<p>Get Leave Fsm Detail:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">service</span>
 
-<table><thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
-</tr>
-</tbody></table>
+<span class="k">func</span> <span class="p">(</span><span class="n">my</span> <span class="n">MysqlService</span><span class="p">)</span> <span class="n">GetLeaveFsmDetail</span><span class="p">(</span><span class="n">detail</span> <span class="n">req</span><span class="o">.</span><span class="n">FsmSubmitterDetail</span><span class="p">)</span> <span class="p">[]</span><span class="n">resp</span><span class="o">.</span><span class="n">FsmSubmitterDetail</span> <span class="p">{</span>
+  <span class="n">arr</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="n">resp</span><span class="o">.</span><span class="n">FsmSubmitterDetail</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span>
+  <span class="k">switch</span> <span class="kt">uint</span><span class="p">(</span><span class="n">detail</span><span class="o">.</span><span class="n">Category</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="n">global</span><span class="o">.</span><span class="n">FsmCategoryLeave</span><span class="o">:</span>
+    <span class="k">var</span> <span class="n">leave</span> <span class="n">models</span><span class="o">.</span><span class="n">Leave</span>
+    <span class="n">my</span><span class="o">.</span><span class="n">Q</span><span class="o">.</span><span class="n">Tx</span><span class="o">.</span>
+      <span class="n">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="n">models</span><span class="o">.</span><span class="n">Leave</span><span class="p">{})</span><span class="o">.</span>
+      <span class="n">Where</span><span class="p">(</span><span class="s">"fsm_uuid = ?"</span><span class="p">,</span> <span class="n">detail</span><span class="o">.</span><span class="n">Uuid</span><span class="p">)</span><span class="o">.</span>
+      <span class="n">First</span><span class="p">(</span><span class="o">&amp;</span><span class="n">leave</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">leave</span><span class="o">.</span><span class="n">Id</span> <span class="o">&gt;</span> <span class="m">0</span> <span class="p">{</span>
+      <span class="n">arr</span> <span class="o">=</span> <span class="nb">append</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">resp</span><span class="o">.</span><span class="n">FsmSubmitterDetail</span><span class="p">{</span>
+        <span class="n">Name</span><span class="o">:</span> <span class="s">"leave desc"</span><span class="p">,</span>
+        <span class="n">Key</span><span class="o">:</span>  <span class="s">"desc"</span><span class="p">,</span>
+        <span class="n">Val</span><span class="o">:</span>  <span class="n">leave</span><span class="o">.</span><span class="n">Desc</span><span class="p">,</span>
+      <span class="p">})</span>
+      <span class="k">if</span> <span class="o">!</span><span class="n">leave</span><span class="o">.</span><span class="n">StartTime</span><span class="o">.</span><span class="n">IsZero</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">arr</span> <span class="o">=</span> <span class="nb">append</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">resp</span><span class="o">.</span><span class="n">FsmSubmitterDetail</span><span class="p">{</span>
+          <span class="n">Name</span><span class="o">:</span> <span class="s">"leave start time"</span><span class="p">,</span>
+          <span class="n">Key</span><span class="o">:</span>  <span class="s">"startTime"</span><span class="p">,</span>
+          <span class="n">Val</span><span class="o">:</span>  <span class="n">leave</span><span class="o">.</span><span class="n">StartTime</span><span class="o">.</span><span class="n">String</span><span class="p">(),</span>
+        <span class="p">})</span>
+      <span class="p">}</span>
+      <span class="k">if</span> <span class="o">!</span><span class="n">leave</span><span class="o">.</span><span class="n">EndTime</span><span class="o">.</span><span class="n">IsZero</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">arr</span> <span class="o">=</span> <span class="nb">append</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">resp</span><span class="o">.</span><span class="n">FsmSubmitterDetail</span><span class="p">{</span>
+          <span class="n">Name</span><span class="o">:</span> <span class="s">"leave end time"</span><span class="p">,</span>
+          <span class="n">Key</span><span class="o">:</span>  <span class="s">"endTime"</span><span class="p">,</span>
+          <span class="n">Val</span><span class="o">:</span>  <span class="n">leave</span><span class="o">.</span><span class="n">EndTime</span><span class="o">.</span><span class="n">String</span><span class="p">(),</span>
+        <span class="p">})</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">arr</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/fsm/get_detail.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/fsm/get_detail.jpeg?raw=true" width="600" />
+</a></p>
+<h3 id='finite-state-machine-how-to-use-update-detail'>Update Detail</h3>
+<blockquote>
+<p>Update Leave Fsm Detail:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">service</span>
+
+<span class="k">func</span> <span class="p">(</span><span class="n">my</span> <span class="n">MysqlService</span><span class="p">)</span> <span class="n">UpdateLeaveFsmDetail</span><span class="p">(</span><span class="n">detail</span> <span class="n">req</span><span class="o">.</span><span class="n">UpdateFsmSubmitterDetail</span><span class="p">)</span> <span class="p">(</span><span class="n">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">switch</span> <span class="kt">uint</span><span class="p">(</span><span class="n">detail</span><span class="o">.</span><span class="n">Category</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="n">global</span><span class="o">.</span><span class="n">FsmCategoryLeave</span><span class="o">:</span>
+    <span class="n">detail</span><span class="o">.</span><span class="n">Parse</span><span class="p">()</span>
+    <span class="n">m</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="k">interface</span><span class="p">{})</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">key</span> <span class="o">:=</span> <span class="k">range</span> <span class="n">detail</span><span class="o">.</span><span class="n">Keys</span> <span class="p">{</span>
+      <span class="n">m</span><span class="p">[</span><span class="n">utils</span><span class="o">.</span><span class="n">SnakeCase</span><span class="p">(</span><span class="n">key</span><span class="p">)]</span> <span class="o">=</span> <span class="n">detail</span><span class="o">.</span><span class="n">Vals</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="k">var</span> <span class="n">leave</span> <span class="n">models</span><span class="o">.</span><span class="n">Leave</span>
+    <span class="n">q</span> <span class="o">:=</span> <span class="n">my</span><span class="o">.</span><span class="n">Q</span><span class="o">.</span><span class="n">Tx</span><span class="o">.</span>
+      <span class="n">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="n">models</span><span class="o">.</span><span class="n">Leave</span><span class="p">{})</span><span class="o">.</span>
+      <span class="n">Where</span><span class="p">(</span><span class="s">"fsm_uuid = ?"</span><span class="p">,</span> <span class="n">detail</span><span class="o">.</span><span class="n">Uuid</span><span class="p">)</span>
+    <span class="n">q</span><span class="o">.</span><span class="n">First</span><span class="p">(</span><span class="o">&amp;</span><span class="n">leave</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">leave</span><span class="o">.</span><span class="n">Id</span> <span class="o">&gt;</span> <span class="m">0</span> <span class="p">{</span>
+      <span class="n">err</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">Updates</span><span class="p">(</span><span class="o">&amp;</span><span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="n">Error</span>
+      <span class="k">return</span> <span class="n">errors</span><span class="o">.</span><span class="n">WithStack</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="no">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/fsm/update_detail.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/fsm/update_detail.jpeg?raw=true" width="600" />
+</a></p>
+<h3 id='finite-state-machine-how-to-use-model'>Model</h3>
+<blockquote>
+<p>Leave Model:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">models</span>
+
+<span class="k">const</span> <span class="p">(</span>
+  <span class="n">LevelStatusWaiting</span>        <span class="kt">uint</span> <span class="o">=</span> <span class="no">iota</span> <span class="c">// waiting approval</span>
+  <span class="n">LevelStatusApproved</span>                   <span class="c">// approved</span>
+  <span class="n">LevelStatusRefused</span>                    <span class="c">// approval rejection</span>
+  <span class="n">LevelStatusCancelled</span>                  <span class="c">// approval cancelled</span>
+  <span class="n">LevelStatusApproving</span>                  <span class="c">// pending approval but not end</span>
+  <span class="n">LevelStatusWaitingConfirm</span>             <span class="c">// approval waiting confirm</span>
+<span class="p">)</span>
+
+<span class="k">type</span> <span class="n">Leave</span> <span class="k">struct</span> <span class="p">{</span>
+  <span class="n">ms</span><span class="o">.</span><span class="n">M</span>
+  <span class="n">UserId</span>          <span class="kt">uint</span>                    <span class="s">`gorm:"comment:'user id(SysUser.Id)'" json:"userId"`</span>
+  <span class="n">User</span>            <span class="n">SysUser</span>                 <span class="s">`gorm:"foreignKey:UserId" json:"user"`</span>
+  <span class="n">FsmUuid</span>         <span class="kt">string</span>                  <span class="s">`gorm:"size:100;comment:'finite state machine uuid'" json:"fsmUuid"`</span>
+  <span class="n">Status</span>          <span class="kt">uint</span>                    <span class="s">`gorm:"default:0;comment:'status(0:submitted 1:approved 2:refused 3:cancel 4:approving 5:waiting confirm)'" json:"status"`</span>
+  <span class="n">ApprovalOpinion</span> <span class="kt">string</span>                  <span class="s">`gorm:"comment:'approval opinion or remark'" json:"approvalOpinion"`</span>
+  <span class="n">Desc</span>            <span class="kt">string</span>                  <span class="s">`gorm:"comment:'submitter description'" json:"desc"`</span>
+  <span class="n">StartTime</span>       <span class="n">carbon</span><span class="o">.</span><span class="n">ToDateTimeString</span> <span class="s">`gorm:"comment:'start time'" json:"startTime"`</span>
+  <span class="n">EndTime</span>         <span class="n">carbon</span><span class="o">.</span><span class="n">ToDateTimeString</span> <span class="s">`gorm:"comment:'end time'" json:"endTime"`</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/fsm/model.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/fsm/model.jpeg?raw=true" width="600" />
+</a></p>
+<h3 id='finite-state-machine-how-to-use-common-api'>Common Api</h3>
+<blockquote>
+<p>Fsm Common Api:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">router</span>
+
+<span class="k">func</span> <span class="p">(</span><span class="n">rt</span> <span class="n">Router</span><span class="p">)</span> <span class="n">Fsm</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">router1</span> <span class="o">:=</span> <span class="n">rt</span><span class="o">.</span><span class="n">Casbin</span><span class="p">(</span><span class="s">"/fsm"</span><span class="p">)</span>
+  <span class="n">router2</span> <span class="o">:=</span> <span class="n">rt</span><span class="o">.</span><span class="n">CasbinAndIdempotence</span><span class="p">(</span><span class="s">"/fsm"</span><span class="p">)</span>
+  <span class="n">router1</span><span class="o">.</span><span class="n">GET</span><span class="p">(</span><span class="s">"/approving/list"</span><span class="p">,</span> <span class="n">v1</span><span class="o">.</span><span class="n">FindFsmApprovingLog</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">v1Ops</span><span class="o">...</span><span class="p">))</span>
+  <span class="n">router1</span><span class="o">.</span><span class="n">GET</span><span class="p">(</span><span class="s">"/log/track"</span><span class="p">,</span> <span class="n">v1</span><span class="o">.</span><span class="n">FindFsmLogTrack</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">v1Ops</span><span class="o">...</span><span class="p">))</span>
+  <span class="n">router1</span><span class="o">.</span><span class="n">GET</span><span class="p">(</span><span class="s">"/submitter/detail"</span><span class="p">,</span> <span class="n">v1</span><span class="o">.</span><span class="n">GetFsmSubmitterDetail</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">v1Ops</span><span class="o">...</span><span class="p">))</span>
+  <span class="n">router1</span><span class="o">.</span><span class="n">PATCH</span><span class="p">(</span><span class="s">"/submitter/detail"</span><span class="p">,</span> <span class="n">v1</span><span class="o">.</span><span class="n">UpdateFsmSubmitterDetail</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">v1Ops</span><span class="o">...</span><span class="p">))</span>
+  <span class="n">router1</span><span class="o">.</span><span class="n">PATCH</span><span class="p">(</span><span class="s">"/approve"</span><span class="p">,</span> <span class="n">v1</span><span class="o">.</span><span class="n">FsmApproveLog</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">v1Ops</span><span class="o">...</span><span class="p">))</span>
+  <span class="n">router1</span><span class="o">.</span><span class="n">PATCH</span><span class="p">(</span><span class="s">"/cancel"</span><span class="p">,</span> <span class="n">v1</span><span class="o">.</span><span class="n">FsmCancelLogByUuids</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">v1Ops</span><span class="o">...</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/fsm/fsm.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/fsm/fsm.jpeg?raw=true" width="600" />
+</a></p>
+<h1 id='gin-web-docker'>Gin Web Docker</h1><div class="highlight"><pre class="highlight shell tab-shell"><code>git clone https://github.com/piupuer/gin-web-docker
+<span class="nb">cd </span>gin-web-docker
+<span class="nb">chmod</span> +x control.sh
+</code></pre></div><h2 id='gin-web-docker-redis-sentinel'>Redis sentinel</h2><h3 id='gin-web-docker-redis-sentinel-change-master-slave-ip'>Change Master/Slave IP</h3>
+<p>Single machine multiple instance example</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="nb">export </span><span class="nv">REDIS_MASTER_IP</span><span class="o">=</span>10.13.2.252
+<span class="nb">export </span><span class="nv">LOCAL_IP</span><span class="o">=</span>10.13.2.252
+<span class="c"># start port</span>
+<span class="c"># export REDIS_PORT=6379</span>
+</code></pre></div><h3 id='gin-web-docker-redis-sentinel-initialization'>Initialization</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>./control.sh sentinel 3
+</code></pre></div>
+<p>Waiting:</p>
+
+<p><a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/redis/run_sentinel.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/redis/run_sentinel.jpeg?raw=true" width="600" />
+</a></p>
+<h3 id='gin-web-docker-redis-sentinel-status'>Status</h3><h4 id='gin-web-docker-redis-sentinel-status-view-container'>View container</h4><div class="highlight"><pre class="highlight shell tab-shell"><code>docker ps | <span class="nb">grep </span>redis
+</code></pre></div>
+<p><a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/redis/ps.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/redis/ps.jpeg?raw=true" width="600" />
+</a></p>
+<h4 id='gin-web-docker-redis-sentinel-status-master'>Master</h4><div class="highlight"><pre class="highlight shell tab-shell"><code>docker <span class="nb">exec</span> <span class="nt">-it</span> redis-master redis-cli <span class="nt">-a</span> 123456
+
+keys <span class="k">*</span>
+
+<span class="c"># show REPLICATION info</span>
+info REPLICATION
+
+<span class="c"># success example:</span>
+<span class="c"># connected_slaves:2</span>
+</code></pre></div>
+<p><a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/redis/master.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/redis/master.jpeg?raw=true" width="600" />
+</a></p>
+<h4 id='gin-web-docker-redis-sentinel-status-slave'>Slave</h4><div class="highlight"><pre class="highlight shell tab-shell"><code>docker <span class="nb">exec</span> <span class="nt">-it</span> redis-slave2 redis-cli <span class="nt">-p</span> 6381 <span class="nt">-a</span> 123456
+
+keys <span class="k">*</span>
+
+<span class="c"># show REPLICATION info</span>
+info REPLICATION
+</code></pre></div>
+<p><a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/redis/slave.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/redis/slave.jpeg?raw=true" width="600" />
+</a></p>
+<h2 id='gin-web-docker-loki'>Loki</h2><h3 id='gin-web-docker-loki-initialization'>Initialization</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>./control.sh loki
+</code></pre></div>
+<p>Waiting:</p>
+
+<p><a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/loki/run.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/loki/run.jpeg?raw=true" width="600" />
+</a></p>
+<h3 id='gin-web-docker-loki-grafana'>Grafana</h3><h4 id='gin-web-docker-loki-grafana-login'>Login</h4>
+<p>Default username/password: admin/admin<br>
+<a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/loki/grafana_login.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/loki/grafana_login.jpeg?raw=true" width="600" />
+</a></p>
+<h4 id='gin-web-docker-loki-grafana-skip'>Skip</h4>
+<p><a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/loki/grafana_login_skip.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/loki/grafana_login_skip.jpeg?raw=true" width="600" />
+</a></p>
+<h4 id='gin-web-docker-loki-grafana-add-source'>Add source</h4>
+<p><a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/loki/grafana_add_source.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/loki/grafana_add_source.jpeg?raw=true" width="600" />
+</a></p>
+<h5 id='gin-web-docker-loki-grafana-add-source-select-loki'>Select Loki</h5>
+<p><a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/loki/grafana_select_loki.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/loki/grafana_select_loki.jpeg?raw=true" width="600" />
+</a></p>
+<h5 id='gin-web-docker-loki-grafana-add-source-gateway'>Gateway</h5>
+<p>URL: loki-gateway:3100</p>
+
+<p><a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/loki/grafana_set_loki_uri.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/loki/grafana_set_loki_uri.jpeg?raw=true" width="600" />
+</a></p>
+
+<p>Save:
+<a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/loki/grafana_save.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/loki/grafana_save.jpeg?raw=true" width="600" />
+</a></p>
+<h4 id='gin-web-docker-loki-grafana-logs'>Logs</h4>
+<p>Explore:<br>
+<a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/loki/grafana_explore.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/loki/grafana_explore.jpeg?raw=true" width="600" />
+</a></p>
+
+<p>Select labels:<br>
+<a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/loki/grafana_labels.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/loki/grafana_labels.jpeg?raw=true" width="600" />
+</a></p>
+<h1 id='distribute-cron-task'>Distribute Cron Task</h1><h2 id='distribute-cron-task-redis'>Redis</h2>
+<p>I assume you have redis installed, or click <a href="#gin-web-docker-redis-sentinel-initialization">this</a> to initialization.</p>
+<h2 id='distribute-cron-task-go-helper'>Go Helper</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>go get <span class="nt">-u</span> github.com/piupuer/go-helper
+</code></pre></div>
+<p>Download Go Helper by <code>go get</code>.</p>
+<h2 id='distribute-cron-task-example'>Example</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"fmt"</span>
+  <span class="s">"github.com/piupuer/go-helper/pkg/constant"</span>
+  <span class="s">"github.com/piupuer/go-helper/pkg/job"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c">// parse redis URI</span>
+  <span class="n">client</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">job</span><span class="o">.</span><span class="n">ParseRedisURI</span><span class="p">(</span><span class="s">"redis://127.0.0.1:6379/0"</span><span class="p">)</span>
+
+  <span class="n">j</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">job</span><span class="o">.</span><span class="n">New</span><span class="p">(</span>
+    <span class="n">job</span><span class="o">.</span><span class="n">Config</span><span class="p">{</span>
+      <span class="n">RedisClient</span><span class="o">:</span> <span class="n">client</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="n">job</span><span class="o">.</span><span class="n">WithAutoRequestId</span><span class="p">(</span><span class="no">true</span><span class="p">),</span>
+  <span class="p">)</span>
+  <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+    <span class="nb">panic</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="c">// add task and start</span>
+  <span class="n">j</span><span class="o">.</span><span class="n">AddTask</span><span class="p">(</span><span class="n">job</span><span class="o">.</span><span class="n">GoodTask</span><span class="p">{</span>
+    <span class="n">Name</span><span class="o">:</span> <span class="s">"task"</span><span class="p">,</span>
+    <span class="n">Expr</span><span class="o">:</span> <span class="s">"@every 5s"</span><span class="p">,</span>
+    <span class="n">Func</span><span class="o">:</span> <span class="n">task</span><span class="p">,</span>
+  <span class="p">})</span><span class="o">.</span><span class="n">Start</span><span class="p">()</span>
+
+  <span class="n">ch</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="k">chan</span> <span class="kt">int</span><span class="p">)</span>
+  <span class="o">&lt;-</span><span class="n">ch</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">task</span><span class="p">(</span><span class="n">ctx</span> <span class="n">context</span><span class="o">.</span><span class="n">Context</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+  <span class="n">requestId</span> <span class="o">:=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="n">constant</span><span class="o">.</span><span class="n">MiddlewareRequestIdCtxKey</span><span class="p">)</span>
+  <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">requestId</span><span class="p">,</span> <span class="s">"task running..."</span><span class="p">)</span>
+  <span class="k">return</span> <span class="no">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Run result:</p>
+
+<p><a target="_blank" href="https://github.com/piupuer/gin-web-images/blob/master/docs/cron/run.jpeg?raw=true">
+<img src="https://github.com/piupuer/gin-web-images/blob/master/docs/cron/run.jpeg?raw=true" width="600" />
+</a></p>
+<h3 id='distribute-cron-task-example-new'>New</h3><h4 id='distribute-cron-task-example-new-autorequestid'>AutoRequestId</h4>
+<p>If set it true, request id is automatically generated each time the task is executed.</p>
+<h3 id='distribute-cron-task-example-addtask'>AddTask</h3><h4 id='distribute-cron-task-example-addtask-name'>Name</h4>
+<p>Task name must be unique.</p>
+<h4 id='distribute-cron-task-example-addtask-expr'>Expr</h4>
+<p>Task expression is support:</p>
+
+<ul>
+<li>0 30 * * * * (Every hour on the half hour)</li>
+<li>@hourly (Every hour)</li>
+<li>@every 1h30m (Every hour thirty)</li>
+</ul>
+
+<p>More: <a href="https://github.com/robfig/cron">robfig/cron</a></p>
 
       </div>
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
+                <a href="#" data-language-name="go">go</a>
           </div>
       </div>
     </div>
