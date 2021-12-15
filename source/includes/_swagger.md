@@ -41,6 +41,6 @@ After run `swag init` gin-web/docs/swagger/** will be changed.
 
 #### View
 
-You can view api list in [127.0.0.1/swagger/index.html](http://127.0.0.1/swagger/index.html)
+You can view api list in [127.0.0.1/swagger/index.html](http://127.0.0.1/swagger/index.html).
 
-#### More: [swag](https://github.com/swaggo/swag)
+More: [swag](https://github.com/swaggo/swag)
